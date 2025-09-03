@@ -1,0 +1,193 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #aebdff 10%, #562786 90%);
+    min-height: 100vh;
+    padding: 20px;
+    margin-top: auto;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card {
+    background: linear-gradient(360deg, #ffc8ca 10%, #9a1b87 80%);
+    color: white;
+    text-align: center;
+    box-shadow: 0 30px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.card h2 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.3);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input {
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+button {
+    padding: 15px;
+    background: linear-gradient(180deg, #b0befe 0%, #bc97e1 100%);
+    color: rgb(4, 79, 117);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    color: rgb(249, 214, 168);
+    transform: translateY(-3px);
+    box-shadow: 5 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+.card button {
+    padding: 15px;
+    background: linear-gradient(180deg, #b0befe 0%, #bc97e1 100%);
+    color: rgb(4, 79, 117);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card button:hover {
+    color: rgb(249, 214, 168);
+    transform: translateY(-3px);
+    box-shadow: 5 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #667eea;
+    text-decoration: none;
+    border: 2px solid #667eea;
+    border-radius: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+a:hover {
+    background: #e7eaf4;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 15px rgba(26, 19, 130, 0.098);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+        gap: 20px;
+    }
+    
+    section {
+        padding: 20px;
+    }
+    
+    .card h2 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Loading animation */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading button {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Success/Error messages */
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

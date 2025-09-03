@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Dashboard</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .dashboard {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .welcome-message {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .user-info {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="dashboard">
+            <h1>🎉 Welcome to Your Dashboard!</h1>
+            <div class="welcome-message">
+                You have successfully logged in.
+            </div>
+            
+            <div class="user-info">
+                <h3>User Information</h3>
+                <p><strong>Username:</strong> <span id="username">Loading...</span></p>
+                <p><strong>Login Time:</strong> <span id="login-time">Loading...</span></p>
+                <p><strong>Token Status:</strong> <span id="token-status">Checking...</span></p>
+            </div>
+            
+            <div class="actions">
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                <a href="../index.html" class="btn btn-primary">Back to Login Page</a>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('token');
+            const username = localStorage.getItem('username');
+            
+            // Check if user is logged in
+            if (!token) {
+                alert('Please login first');
+                window.location.href = '../index.html';
+                return;
+            }
+            
+            // Display user information
+            document.getElementById('username').textContent = username || 'Unknown User';
+            document.getElementById('login-time').textContent = new Date().toLocaleString();
+            document.getElementById('token-status').textContent = token ? 'Valid' : 'Invalid';
+            
+            console.log('Dashboard loaded for user:', username);
+        });
+        
+        function logout() {
+            // Clear stored data
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            
+            // Show confirmation
+            alert('Logged out successfully!');
+            
+            // Redirect to login page
+            window.location.href = '../index.html';
+        }
+        
+        // Optional: Auto-logout after inactivity
+        let inactivityTimer;
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                alert('Session expired due to inactivity');
+                logout();
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+        
+        // Reset timer on user activity
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keypress', resetInactivityTimer);
+        resetInactivityTimer();
+    </script>
+</body>
+</html>
